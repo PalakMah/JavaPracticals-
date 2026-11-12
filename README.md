@@ -6,18 +6,14 @@ This repository contains Java programs implemented as part of the **Java Program
 
 ## 📌 Table of Contents
 
-1. [Experiment 1 – Java Fundamentals, Operators and Decision Making](#experiment-1-java-fundamentals-operators-and-decision-making)
-2. [Experiment 2 – Arrays and String Manipulation](#experiment-2-arrays-and-string-manipulation)
-3. [Experiment 3 – Classes, Objects, Constructors and Method Overloading](#experiment-3-classes-objects-constructors-and-method-overloading)
-4. [Experiment 4 – Inheritance, Polymorphism and Abstract Classes](#experiment-4-inheritance-polymorphism-and-abstract-classes)
-5. [Experiment 5 – Packages and Interfaces](#experiment-5-packages-and-interfaces)
-6. [Experiment 6 – Exception Handling and User-Defined Exceptions](#experiment-6-exception-handling-and-user-defined-exceptions)
-7. [Experiment 7 – Multithreading and Thread Synchronization](#experiment-7-multithreading-and-thread-synchronization)
-8. [Experiment 8 – AWT GUI and Event Handling](#experiment-8-awt-gui-and-event-handling)
-9. [Experiment 9 – File Handling, Streams and Object Serialization](#experiment-9-file-handling-streams-and-object-serialization)
-10. [Experiment 10 – Database Programming Using JDBC](#experiment-10-database-programming-using-jdbc)
-
-Also see: [Technologies Used](#️-technologies-used) · [Installation and Setup](#️-installation-and-setup) · [Repository Structure](#-repository-structure) · [Learning Outcomes](#-learning-outcomes)
+- [Objectives](#-objectives)
+- [Programs in This Repository](#-programs-in-this-repository)
+- [List of Experiments](#-list-of-experiments)
+- [Technologies Used](#️-technologies-used)
+- [Installation and Setup](#️-installation-and-setup)
+- [Repository Structure](#-repository-structure)
+- [Learning Outcomes](#-learning-outcomes)
+- [Author](#-author)
 
 ---
 
@@ -31,6 +27,24 @@ Also see: [Technologies Used](#️-technologies-used) · [Installation and Setup
 - Develop GUI applications using Java AWT.
 - Perform file operations and object serialization.
 - Connect Java applications with MySQL databases using JDBC.
+
+---
+
+## 💻 Programs in This Repository
+
+| File / Folder | Description | Experiment |
+|---|---|---|
+| `mypack/` | User-defined package containing related classes | 5 – Packages and Interfaces |
+| `AccessPackage.java` | Imports and accesses classes from `mypack` | 5 – Packages and Interfaces |
+| `Bank.java` | Bank system program | 3 / 6 |
+| `DatabaseConnection.java` | Establishes the JDBC connection to MySQL | 10 – JDBC |
+| `StudentManagement.java` | Student Database Management System (CRUD menu) | 10 – JDBC |
+| `DisplayStudent.java` | Retrieves and displays student records using `ResultSet` | 10 – JDBC |
+| `UpdateStudent.java` | Updates student records | 10 – JDBC |
+| `PreparedStatementDemo.java` | Parameterized queries using `PreparedStatement` | 10 – JDBC |
+| `JDBCComponents.java` | Demonstrates `Connection`, `Statement`, `ResultSet` and `PreparedStatement` | 10 – JDBC |
+
+> More programs will be added as the remaining experiments are completed.
 
 ---
 
@@ -111,22 +125,22 @@ Also see: [Technologies Used](#️-technologies-used) · [Installation and Setup
 
 **Concepts:** Packages, package, import, CLASSPATH, Interfaces, Multiple Inheritance Through Interfaces, Nested Interfaces and Private Interface Methods.
 
-**How to compile and run (packages):**
+**Files:** `mypack/`, `AccessPackage.java`
 
-Programs that use packages are compiled and run differently from single-file programs. From inside the `Experiment-5` folder:
+**How to compile and run:**
+
+Programs that use packages are compiled and run differently from single-file programs. From the repository root:
 
 ```bash
-# Compile the package classes (creates the mypack/ folder structure)
-javac -d . mypack/*.java
+# Compile the package classes
+javac mypack/*.java
 
-# Compile the main program that imports the package
-javac MainProgram.java
+# Compile the program that imports the package
+javac AccessPackage.java
 
-# Run the main program
-java MainProgram
+# Run it
+java AccessPackage
 ```
-
-> Replace `mypack` and `MainProgram` with your actual package and class names. If the main class itself is inside a package, run it with its full name, e.g. `java mypack.MainProgram`.
 
 ### Experiment 6: Exception Handling and User-Defined Exceptions
 
@@ -204,6 +218,8 @@ java MainProgram
 
 **Database:** MySQL
 
+**Files:** `DatabaseConnection.java`, `StudentManagement.java`, `DisplayStudent.java`, `UpdateStudent.java`, `PreparedStatementDemo.java`, `JDBCComponents.java`
+
 **Sample database setup:**
 
 ```sql
@@ -218,7 +234,7 @@ CREATE TABLE IF NOT EXISTS Student (
 );
 ```
 
-> Adjust the column names and types to match the table used in your code.
+> Adjust the column names and types to match the table used in the code.
 
 ---
 
@@ -263,45 +279,47 @@ cd JavaPracticals-
 
 ### 3. Compile and Run Java Programs
 
-Open the experiment folder, then compile and run:
+All programs are in the repository root. Compile a file:
 
 ```bash
-cd Experiment-1
 javac ProgramName.java
+```
+
+Run the program:
+
+```bash
 java ProgramName
 ```
 
-For packages (Experiment 5), see the [compile and run instructions](#experiment-5-packages-and-interfaces) in that section.
+For the package program (Experiment 5), see the [compile and run steps](#experiment-5-packages-and-interfaces) in that section.
 
 ### 4. JDBC Setup (Experiment 10)
 
 1. Install MySQL Server.
 2. Create the `StudentDB` database and `Student` table (see the [SQL snippet](#experiment-10-database-programming-using-jdbc) above).
 3. Download **MySQL Connector/J** from the official MySQL website.
-4. Create a `lib/` folder in the repository root and place the Connector/J JAR file inside it (the JAR is not included in this repository).
+4. Create a `lib/` folder in the project directory and place the Connector/J JAR file inside it (the JAR is not included in this repository).
 5. Add the JAR to the Java classpath when compiling and running.
 
 **Windows (PowerShell):**
 
 ```powershell
-cd Experiment-10
-javac -cp ".;..\lib\mysql-connector-j.jar" StudentManagement.java
-java  -cp ".;..\lib\mysql-connector-j.jar" StudentManagement
+javac -cp ".;lib\mysql-connector-j.jar" StudentManagement.java
+java  -cp ".;lib\mysql-connector-j.jar" StudentManagement
 ```
 
 **Linux / macOS:**
 
 ```bash
-cd Experiment-10
-javac -cp ".:../lib/mysql-connector-j.jar" StudentManagement.java
-java  -cp ".:../lib/mysql-connector-j.jar" StudentManagement
+javac -cp ".:lib/mysql-connector-j.jar" StudentManagement.java
+java  -cp ".:lib/mysql-connector-j.jar" StudentManagement
 ```
 
 > 💡 The JAR file name usually includes a version number (for example `mysql-connector-j-9.x.x.jar`). Use the exact file name you downloaded.
 >
 > On Windows the classpath separator is `;`, while on Linux and macOS it is `:`.
 
-**Note:** Configure your own MySQL username and password locally. Never upload database credentials to GitHub.
+**Note:** Configure your own MySQL username and password locally in `DatabaseConnection.java`. Never upload database credentials to GitHub.
 
 ---
 
@@ -310,50 +328,18 @@ java  -cp ".:../lib/mysql-connector-j.jar" StudentManagement
 ```text
 JavaPracticals-/
 │
-├── Experiment-1/
-│   └── Java Fundamentals
-│
-├── Experiment-2/
-│   └── Arrays and Strings
-│
-├── Experiment-3/
-│   └── Classes and Objects
-│
-├── Experiment-4/
-│   └── Inheritance and Polymorphism
-│
-├── Experiment-5/
-│   ├── mypack/
-│   └── Interfaces
-│
-├── Experiment-6/
-│   └── Exception Handling
-│
-├── Experiment-7/
-│   └── Multithreading
-│
-├── Experiment-8/
-│   └── AWT and Event Handling
-│
-├── Experiment-9/
-│   └── File Handling
-│
-├── Experiment-10/
-│   ├── DatabaseConnection.java
-│   ├── StudentManagement.java
-│   ├── DisplayStudent.java
-│   ├── UpdateStudent.java
-│   ├── PreparedStatementDemo.java
-│   └── JDBCComponents.java
-│
-├── lib/
-│   └── mysql-connector-j.jar    (download separately)
-│
+├── mypack/                      # User-defined package (Experiment 5)
 ├── .gitignore
+├── AccessPackage.java           # Uses mypack (Experiment 5)
+├── Bank.java                    # Bank system program
+├── DatabaseConnection.java      # JDBC connection (Experiment 10)
+├── DisplayStudent.java          # Display records (Experiment 10)
+├── JDBCComponents.java          # JDBC components demo (Experiment 10)
+├── PreparedStatementDemo.java   # PreparedStatement demo (Experiment 10)
+├── StudentManagement.java       # Student DBMS with CRUD (Experiment 10)
+├── UpdateStudent.java           # Update records (Experiment 10)
 └── README.md
 ```
-
-*Note: The structure above represents the suggested organization of the experiments. Update the folder and file names to match the actual repository contents.*
 
 ---
 
